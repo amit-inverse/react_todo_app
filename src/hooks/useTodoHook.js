@@ -15,13 +15,15 @@ const useTodoHook = () => {
       let id = new Date().getTime().toString();
       setTaskArray([...(taskArray || []), { id, task }]);
     } else {
-      const newTaskArray = taskArray.filter(
-        (task) => task.id !== editedTask.id
-      );
-      setTaskArray([
-        ...(newTaskArray || []),
-        { id: editedTask.id, task: task },
-      ]);
+    //   const newTaskArray = taskArray.filter(
+    //     (task) => task.id !== editedTask.id
+    //   );
+    //   setTaskArray([
+    //     ...(newTaskArray || []),
+    //     { id: editedTask.id, task: task },
+    //   ]);
+      const index = taskArray.findIndex((task) => task.id === editedTask.id);
+      taskArray[index].task = task;
 
       setActionButton(false);
     }
